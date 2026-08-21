@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陞得 你心｜挖土機模型收藏館</title>
+<style>
+:root{
+  --orange:#e87518; --orange2:#ff9d3f; --dark:#171717; --gray:#6b6b6b;
+  --cream:#f7f3ed; --line:#e7e0d7; --white:#fff;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;background:var(--cream);color:var(--dark)}
+button,a{font:inherit} a{text-decoration:none;color:inherit}
+.header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1200px;margin:auto;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+.logo{font-weight:900;letter-spacing:2px}.logo span{color:var(--orange)}
+.navlinks{display:flex;gap:24px;font-size:14px;color:#444}.navlinks a:hover{color:var(--orange)}
+.cart-pill{border:0;background:var(--dark);color:#fff;padding:10px 16px;border-radius:999px;cursor:pointer}
+.hero{max-width:1200px;margin:24px auto 0;padding:0 24px}
+.hero-window{height:430px;overflow:hidden;border-radius:28px;position:relative;background:#222;box-shadow:0 18px 50px rgba(0,0,0,.14)}
+.hero-track{height:100%;display:flex;transition:transform .6s ease}
+.hero-slide{min-width:100%;height:100%;position:relative;background:#ddd}
+.hero-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-placeholder{height:100%;display:grid;place-items:center;color:#777;background:linear-gradient(135deg,#ded8cf,#f4efe8)}
+.hero-caption{position:absolute;left:38px;bottom:35px;color:#fff;text-shadow:0 2px 15px #000;font-size:clamp(24px,4vw,46px);font-weight:900}
+.hero-dots{position:absolute;bottom:18px;right:28px;display:flex;gap:7px}
+.dot{width:9px;height:9px;border-radius:50%;border:0;background:#fff8;cursor:pointer}.dot.active{background:#fff}
+.section{max-width:1200px;margin:70px auto;padding:0 24px}
+.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:24px}
+.eyebrow{font-size:12px;color:var(--orange);font-weight:900;letter-spacing:2px}
+h1,h2,h3,p{margin-top:0}.section h2{font-size:32px;margin:6px 0}
+.sub{color:var(--gray);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.05);cursor:pointer;transition:.25s}
+.card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,.1)}
+.card-img{aspect-ratio:4/3;background:#eee;overflow:hidden}
+.card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.placeholder{height:100%;display:grid;place-items:center;color:#888;font-size:14px;background:linear-gradient(135deg,#e8e4df,#f7f4ef)}
+.card-body{padding:18px}.tag{font-size:11px;color:var(--orange);font-weight:900;letter-spacing:1px}
+.card-title{font-size:20px;font-weight:900;margin:5px 0}.price{font-size:18px;font-weight:900}.meta{font-size:12px;color:#777;margin-top:8px}
+.pager{display:flex;justify-content:center;gap:8px;margin-top:30px}.page-btn{border:1px solid var(--line);background:#fff;padding:10px 15px;border-radius:10px;cursor:pointer}.page-btn.active{background:var(--dark);color:#fff}
+.bulk{margin-top:90px;background:var(--dark);color:#fff;border-radius:30px;padding:45px 50px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.bulk h2{font-size:32px;margin:6px 0}.bulk p{color:#bbb;max-width:650px}
+.buy-all{border:0;background:var(--orange);color:#fff;padding:17px 28px;border-radius:14px;font-weight:900;cursor:pointer;white-space:nowrap}
+.buy-all:hover{background:var(--orange2)}
+.footer{margin-top:80px;background:#111;color:#aaa;padding:35px 24px;text-align:center;font-size:12px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.show{display:flex}.modal-box{width:min(1000px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:26px;position:relative}
+.close{position:absolute;right:18px;top:18px;width:40px;height:40px;border:0;border-radius:50%;background:#111;color:#fff;z-index:5;cursor:pointer}
+.detail{display:grid;grid-template-columns:1.15fr .85fr}.gallery{padding:24px;background:#f2eee8}.main-photo{height:430px;border-radius:18px;overflow:hidden;background:#ddd}.main-photo img{width:100%;height:100%;object-fit:cover}.thumbs{display:flex;gap:10px;overflow-x:auto;margin-top:12px;padding-bottom:5px}.thumb{width:82px;height:64px;flex:0 0 auto;border:2px solid transparent;border-radius:10px;overflow:hidden;cursor:pointer}.thumb.active{border-color:var(--orange)}.thumb img{width:100%;height:100%;object-fit:cover}
+.detail-info{padding:48px 35px}.detail-info h2{font-size:32px}.spec{display:grid;grid-template-columns:110px 1fr;gap:11px;border-top:1px solid var(--line);padding-top:18px;margin-top:22px;font-size:14px}.spec b{color:#777}.modal-buy{margin-top:30px;width:100%;padding:15px;border:0;border-radius:13px;background:var(--dark);color:#fff;font-weight:900;cursor:pointer}
+.cart-modal{padding:40px}.cart-row{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--line)}.total{font-size:26px;font-weight:900;text-align:right;margin:25px 0}.ship{background:#f7f3ed;padding:15px;border-radius:12px;font-size:13px;color:#555}
+.url-box{margin-top:18px;padding:13px;background:#fff7ef;border:1px dashed var(--orange);border-radius:12px;font-size:12px;color:#75400f}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.detail{grid-template-columns:1fr}.main-photo{height:330px}.bulk{flex-direction:column;align-items:flex-start}.navlinks{display:none}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.hero-window{height:330px}.section{margin:50px auto}.bulk{padding:30px}.detail-info{padding:30px 22px}}
+
+/* ===== MOBILE / RESPONSIVE VERSION ===== */
+@media (max-width: 800px){
+  .nav{height:62px;padding:0 14px}
+  .logo{font-size:15px;letter-spacing:1px}
+  .cart-pill{padding:9px 13px;font-size:13px}
+  .navlinks{display:none}
+  .hero{padding:0 12px;margin-top:12px}
+  .hero-window{height:310px;border-radius:20px}
+  .hero-caption{left:20px;bottom:28px;font-size:25px}
+  .section{padding:0 14px;margin:45px auto}
+  .section-head{display:block}
+  .section h2{font-size:27px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .card{border-radius:16px}
+  .card-body{padding:13px}
+  .card-title{font-size:16px;line-height:1.35}
+  .price{font-size:15px}
+  .meta{font-size:11px;line-height:1.5}
+  .bulk{padding:28px 22px;border-radius:22px;flex-direction:column;align-items:stretch}
+  .bulk h2{font-size:25px}
+  .buy-all{width:100%}
+  .detail{grid-template-columns:1fr}
+  .gallery{padding:14px}
+  .main-photo{height:270px;border-radius:14px}
+  .detail-info{padding:25px 20px}
+  .detail-info h2{font-size:27px}
+  .thumbs{-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .thumbs::-webkit-scrollbar{display:none}
+  .thumb{width:76px;height:60px}
+  .modal{padding:10px}
+  .modal-box{max-height:95vh;border-radius:20px}
+  .cart-modal{padding:28px 18px}
+  body{-webkit-tap-highlight-color:transparent}
+  button,.card{touch-action:manipulation}
+}
+@media (max-width:520px){
+  .grid{grid-template-columns:1fr}
+  .hero-window{height:300px}
+  .section{margin:42px auto}
+  .bulk{padding:26px 18px}
+  .detail-info{padding:24px 18px}
+  .hero-caption{font-size:22px}
+  .pager{gap:6px}
+  .page-btn{padding:8px 12px}
+}
+
+@media(max-width:800px){
+  #formModal .modal-box{max-height:96vh;border-radius:18px}
+  #formModal iframe{height:calc(96vh - 105px)}
+}
+
+/* ===== 整批販售提醒 ===== */
+.sale-notice{
+  margin-top:20px;
+  padding:18px 20px;
+  background:#fff7ef;
+  border:1px solid #f0c69f;
+  border-radius:14px;
+  color:#5f4632;
+  font-size:14px;
+  line-height:1.8;
+}
+
+.sale-notice strong{
+  display:block;
+  color:var(--orange);
+  font-size:16px;
+  margin-bottom:6px;
+}
+
+.sale-notice p{
+  margin:5px 0;
+}
+
+.sale-notice b{
+  color:var(--dark);
+}
+
+</style>
+
+
+
+</style>
+</head>
+<body>
+
+<header class="header">
+  <nav class="nav">
+    <div class="logo">陞得你<span>型</span></div>
+    <div class="navlinks"><a href="#models">模型收藏</a><a href="#all">一次購入</a></div>
+    <button class="cart-pill" onclick="openCart()">購物車 <span id="cartCount">0</span></button>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-window">
+    <div class="hero-track" id="heroTrack"></div>
+    <div class="hero-dots" id="heroDots"></div>
+  </div>
+</section>
+
+<section class="section" id="models">
+  <div class="section-head">
+    <div><div class="eyebrow">MODEL COLLECTION</div><h2>挖土機模型收藏</h2><div class="sub">點擊模型查看完整照片、品名與規格</div></div>
+  </div>
+  <div class="grid" id="productGrid"></div>
+  <div class="pager" id="pager"></div>
+</section>
+
+<section class="section" id="all">
+  <div class="bulk">
+    <div>
+      <div class="eyebrow">COLLECT THEM ALL</div>
+
+      <h2>整批收藏，一次帶走</h2>
+
+      <p>
+        所有模型採整批收藏販售，
+        僅接受一次購買全部商品，不提供單件購買。
+      </p>
+
+      <div class="sale-notice">
+        <strong>📦 販售方式</strong>
+
+        <p>
+          本商品採 <b>整批收藏販售</b>，<br>
+          僅接受一次購買全部商品，不提供單件購買。
+        </p>
+
+        <p>
+          下單前請確認販售方式，確認無誤後再進行購買。
+        </p>
+      </div>
+    </div>
+
+    <button class="buy-all" onclick="buyAll()">
+      購買全部 →
+    </button>
+  </div>
+</section>
+</main>
+
+<footer class="footer">EXCAVATOR LAB · 挖土機模型收藏館</footer>
+
+<!-- 商品詳細視窗 -->
+<div class="modal" id="detailModal" onclick="closeOnBackdrop(event,'detailModal')">
+  <div class="modal-box">
+    <button class="close" onclick="closeModal('detailModal')">×</button>
+    <div class="detail">
+      <div class="gallery"><div class="main-photo" id="mainPhoto"></div><div class="thumbs" id="thumbs"></div></div>
+      <div class="detail-info">
+        <div class="eyebrow" id="detailTag"></div><h2 id="detailName"></h2>
+        <p class="price" id="detailPrice"></p><p id="detailDesc" class="sub"></p>
+        <div class="spec" id="detailSpec"></div>
+        <button class="modal-buy" onclick="buyAll()">整批購買全部商品 →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 購物車 -->
+<div class="modal" id="cartModal" onclick="closeOnBackdrop(event,'cartModal')">
+  <div class="modal-box cart-modal">
+    <button class="close" onclick="closeModal('cartModal')">×</button>
+    <div class="eyebrow">COLLECTION ORDER</div>
+<h2>整批收藏訂購</h2>
+<p class="sub">
+  本商品僅接受整批購買，不提供單件商品購買。
+</p>
+    <div id="cartItems"></div>
+    <div class="total">總金額：NT$ <span id="cartTotal">0</span></div>
+    <div class="ship">確認商品與總金額後，按下「填寫訂購資料」，即可填寫姓名、電話、收件地址與備註。我們收到資料後將安排宅配。</div>
+    <div class="url-box">配送方式：宅配<br>請確認收件姓名、電話與地址填寫正確。</div>
+    <button class="modal-buy" onclick="openOrderForm()">填寫訂購資料 →</button>
+  </div>
+
+</div>
+
+<!-- Google 表單 -->
+<div class="modal" id="formModal" onclick="closeOnBackdrop(event,'formModal')">
+  <div class="modal-box" style="width:min(900px,100%);">
+    <button class="close" onclick="closeModal('formModal')">×</button>
+    <div style="padding:28px 24px 12px;">
+      <div class="eyebrow">ORDER INFORMATION</div>
+      <h2 style="margin:6px 0;">填寫訂購資料</h2>
+      <p class="sub" style="margin-bottom:0;">請填寫收件資訊，送出後我們會依照資料安排宅配。</p>
+    </div>
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSfX7tjEinfnckt2nI0mdaAVJotw8tTjwTuuJTvPuaG8zfuA6A/viewform"
+      width="100%"
+      height="800"
+      frameborder="0"
+      marginheight="0"
+      marginwidth="0"
+      style="display:block;border:0;border-radius:0 0 26px 26px;"
+      title="訂購資料 Google 表單">
+      載入中…
+    </iframe>
+  </div>
+</div>
+
+<script>
+/* =====================================================
+   ① Google 表單
+   ===================================================== */
+const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfX7tjEinfnckt2nI0mdaAVJotw8tTjwTuuJTvPuaG8zfuA6A/viewform";
+
+
+/* =====================================================
+   ② 商品資料
+   ===================================================== */
+
+const products = [
+
+  {
+    id: 1,
+    name: "SUMITOMO SH200模型",
+    tag: "COLLECTION",
+    price: 2400,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境",
+
+    specs: [
+      ["品牌", "SUMITOMO(日本佳友建機)/官方授權LEGEST系列"],
+      ["材質", "合金壓鑄、精細塑膠零件"],
+      ["狀態", "全新未拆封"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-01.01.jpg",
+      "images/model-01.02.jpg",
+      "images/model-01.03.jpg"
+    ]
+  },
+
+
+  {
+    id: 2,
+    name: "CAT 330D 模型",
+    tag: "COLLECTION",
+    price: 3000,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境",
+
+    specs: [
+      ["品牌", "CAT"],
+      ["材質", "合金壓鑄、精細塑膠零件"],
+      ["狀態", "全新未拆封"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-02.01.jpg",
+      "images/model-02.02.jpg",
+      "images/model-02.03.jpg"
+    ]
+  },
+
+
+  {
+    id: 3,
+    name: "MKB 1700V 模型",
+    tag: "COLLECTION",
+    price: 4000,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境",
+
+    specs: [
+      ["品牌", "MKB 1700V 液壓破碎機搭配岩石情境展示座"],
+      ["規格", "精緻塗裝模型/專屬碎石展示底座"],
+      ["狀態", "二手已拆擺(整體品項良好，附外盒)"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-03.01.jpg",
+      "images/model-03.02.jpg"
+    ]
+  },
+
+
+  {
+    id: 4,
+    name: "CATERPILLAR 988B 模型",
+    tag: "COLLECTION",
+    price: 900,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境",
+
+    specs: [
+      ["品牌", "CAT"],
+      ["材質", "合金壓鑄、精細塑膠零件"],
+      ["狀態", "二手已拆擺(無原廠外盒，商品有瑕疵，介意者勿下單)"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-04.01.jpg",
+      "images/model-04.02.jpg"
+    ]
+  },
+
+
+  {
+    id: 5,
+    name: "CATERPILLAR D11R 模型",
+    tag: "COLLECTION",
+    price:2000,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境",
+
+    specs: [
+      ["品牌", "CAT"],
+      ["材質", "合金壓鑄、精細塑膠零件"],
+      ["狀態", "二手已拆擺(無原廠外盒，商品有瑕疵，介意者勿下單)"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-05.01.jpg",
+      "images/model-05.02.jpg"
+      ]
+  },
+
+
+  {
+    id: 6,
+    name: "CATERPILLAR D10N 模型",
+    tag: "COLLECTION",
+    price:2000,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境",
+
+    specs: [
+      ["品牌", "CAT"],
+      ["材質", "合金壓鑄、精細塑膠零件"],
+      ["狀態", "二手已拆擺(無原廠外盒，商品有瑕疵，介意者勿下單)"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-06.01.jpg",
+      "images/model-06.02.jpg"
+      
+    ]
+  },
+
+
+  {
+    id: 7,
+    name: "KOMATSU PC400-5 模型",
+    price:1500,
+tag: "COLLECTION",
+    desc: "※圖片僅供情景示意，非實際拍攝環境；石頭為拍攝情境使用之道具，不包含於商品內容物中",
+
+    specs: [
+      ["品牌", "KOMATSU"],
+      ["材質", "合金壓鑄、精細塑膠零件"],
+      ["狀態", "二手已拆擺(無原廠外盒，商品有瑕疵，介意者勿下單)"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-07.01.jpg",
+      "images/model-07.02.jpg"
+      
+    ]
+  },
+
+
+  {
+    id: 8,
+    name: "KOMATSU PC450-6 模型",
+    tag: "COLLECTION",
+    price: 1500,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境",
+
+    specs: [
+      ["品牌", "KOMATSU"],
+      ["材質", "合金壓鑄、精細塑膠零件"],
+      ["狀態", "二手已拆擺(無原廠外盒，商品有瑕疵，介意者勿下單)"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-08.01.jpg",
+      "images/model-08.02.jpg"
+    ]
+  },
+
+
+  {
+    id: 9,
+    name: "CAT 5080 模型",
+   tag: "COLLECTION",
+    price: 1500,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境",
+
+    specs: [
+      ["品牌", "CAT"],
+      ["材質", "合金壓鑄、精細塑膠零件"],
+      ["狀態", "二手已拆擺(無原廠外盒，商品有瑕疵，介意者勿下單)"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-09.01.jpg",
+      "images/model-09.02.jpg"
+    ]
+  },
+
+{
+    id: 10,
+    name: "CAT 365B 模型",
+   tag: "COLLECTION",
+    price: 1900,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境；石頭為拍攝情境使用之道具，不包含於商品內容物中",
+
+    specs: [
+      ["品牌", "CAT"],
+      ["材質", "合金壓鑄、精細塑膠零件"],
+      ["狀態", "二手已拆擺(無原廠外盒，商品有瑕疵，介意者勿下單)"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-10.01.jpg",
+      "images/model-10.02.jpg"
+      
+    ]
+  },
+
+
+  {
+    id: 11,
+    name: "CAT 320D 模型",
+   tag: "COLLECTION",
+    price: 1000,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境；石頭為拍攝情境使用之道具，不包含於商品內容物中",
+
+    specs: [
+      ["品牌", "CAT"],
+      ["材質", "合金壓鑄、精細塑膠零件"],
+      ["狀態", "二手已拆擺(無原廠外盒，商品有瑕疵，介意者勿下單)"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-11.01.jpg",
+      "images/model-11.02 .jpg"
+  ]
+
+  },
+
+
+  {
+    id: 12,
+    name: "CAT 325 模型",
+    tag: "COLLECTION",
+    price:900,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境；石頭為拍攝情境使用之道具，不包含於商品內容物中",
+
+    specs: [
+      ["品牌", "CAT"],
+      ["材質", "合金壓鑄、精細塑膠零件"],
+      ["狀態", "二手已拆擺(無原廠外盒，商品有瑕疵，介意者勿下單)"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-12.01.jpg",
+      "images/model-12.02.jpg"
+    ]
+  },{
+    id: 13,
+    name: "KOMATSU PC200 模型",
+    tag: "COLLECTION",
+    price: 3000,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境；石頭為拍攝情境使用之道具，不包含於商品內容物中",
+
+    specs: [
+      ["品牌", "KOMATSU"],
+      ["材質", "合金壓鑄、精細塑膠零件"],
+      ["狀態", "二手已拆擺(無原廠外盒，商品有瑕疵，介意者勿下單)"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-13.01.jpg",
+      "images/model-13.02.jpg"
+    ]
+  },
+
+
+  {
+    id: 14,
+    name: "VOLVO EC210 模型",
+   tag: "COLLECTION",
+    price: 1200,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境；石頭為拍攝情境使用之道具，不包含於商品內容物中",
+
+    specs: [
+      ["品牌", "VOLVO"],
+      ["材質", "合金壓鑄、精細塑膠零件"],
+      ["狀態", "二手已拆擺(無原廠外盒，商品有瑕疵，介意者勿下單)"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-14.01.jpg",
+      "images/model-14.02.jpg"
+    ]
+  },
+
+
+  {
+    id: 15,
+    name: "KOBELCO SK350D 模型",
+   tag: "COLLECTION",
+    price: 1900,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境；石頭為拍攝情境使用之道具，不包含於商品內容物中",
+
+    specs: [
+      ["品牌", "KOBELCO"],
+      ["材質", "合金壓鑄、精細塑膠零件"],
+      ["狀態", "二手已拆擺(無原廠外盒，商品有瑕疵，介意者勿下單)"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-15.0..jpg",
+      "images/model-15.02.jpg"
+    ]
+  },
+{
+    id: 16,
+    name: "KOBELCO SK200-5 模型",
+   tag: "COLLECTION",
+    price:1300,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境；石頭為拍攝情境使用之道具，不包含於商品內容物中",
+
+    specs: [
+      ["品牌", "KOBELCO"],
+      ["材質", "合金壓鑄、精細塑膠零件"],
+      ["狀態", "二手已拆擺(無原廠外盒，商品有瑕疵，介意者勿下單)"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-16.01.jpg",
+      "images/model-16.02.jpg"
+     
+    ]
+  },
+
+
+  {
+    id: 17,
+    name: "HITACHI EX200 模型",
+    tag: "COLLECTION",
+    price: 2000,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境；石頭為拍攝情境使用之道具，不包含於商品內容物中",
+
+    specs: [
+      ["品牌", "HITACHI"],
+      ["材質", "合金壓鑄、精細塑膠零件"],
+      ["狀態", "二手已拆擺(無原廠外盒，商品有瑕疵，介意者勿下單)"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-17.01.jpg",
+      "images/model-17.02.jpg"
+     
+    ]
+  },
+
+
+  {
+    id: 18,
+    name: "HITACHI ZAXIS200 模型",
+   tag: "COLLECTION",
+    price: 1900,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境；石頭為拍攝情境使用之道具，不包含於商品內容物中",
+
+    specs: [
+      ["品牌", "HITACHI"],
+      ["材質", "合金壓鑄、精細塑膠零件"],
+      ["狀態", "二手已拆擺(無原廠外盒，商品有瑕疵，介意者勿下單)"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-18.01.jpg",
+      "images/model-18.02.jpg"
+      
+    ]
+  },
+{
+    id: 19,
+    name: "HITACHI ZAXIS450 模型",
+    tag: "COLLECTION",
+    price: 5000,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境；石頭為拍攝情境使用之道具，不包含於商品內容物中",
+
+    specs: [
+      ["品牌", "HITACHI"],
+      ["材質", "合金壓鑄、精細塑膠零件"],
+      ["狀態", "二手已拆擺(無原廠外盒，商品有瑕疵，介意者勿下單)"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-19.01.jpg",
+      "images/model-19.02.jpg"
+     
+    ]
+  },
+  {
+    id: 20,
+    name: "官方NASCAR 卡特彼勒 22號車 限定版賽車外套",
+    tag: "COLLECTION",
+    price: 3000,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境",
+
+    specs: [
+      ["品牌", "CAT"],
+      ["材質", "重磅純棉帆布"],
+      ["尺寸", "M"],
+      ["狀態", "二手"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-20.01.jpg",
+      "images/model-20.02.jpg"]
+  },
+{
+    id: 21,
+    name: "CAT 卡特彼勒賽車隊 夾心邊撞色棒球帽",
+    tag: "COLLECTION",
+    price: 550,
+
+    desc: "※圖片僅供情景示意，非實際拍攝環境",
+
+    specs: [
+      ["品牌", "CAT"],
+      ["材質", "純棉帆布"],
+      ["狀態", "二手"],
+      ["貼心提醒", "產品圖片可能因拍攝光線及螢幕顯示差異產生些微色差，實際顏色請以商品實品為準。"]
+    ],
+
+    images: [
+      "images/model-21.01.jpg",
+      "images/model-21.02.jpg"
+    
+    ]
+  }
+ 
+];
+
+
+/* =====================================================
+   ③ 上方 Banner 圖片
+   ★★★ 這裡就是你原本出錯的地方 ★★★
+
+   Windows 可以使用 \
+   但是網頁網址要使用 /
+   ===================================================== */
+
+const heroImages = [
+
+  "images/banner-01.jpg",
+
+  "images/banner-02 .jpg",
+
+  "images/banner-03.jpg",
+
+  "images/banner-04.jpg",
+ 
+  "images/banner-05.jpg"
+];
+
+
+/* =====================================================
+   基本設定
+   ===================================================== */
+
+const perPage = 6;
+
+let currentPage = 1;
+let currentProduct = null;
+let currentHero = 0;
+
+let cart = [];
+
+
+/* =====================================================
+   金額
+   ===================================================== */
+
+function money(n) {
+  return n.toLocaleString("zh-TW");
+}
+
+
+/* =====================================================
+   圖片預留 / 圖片錯誤
+   ===================================================== */
+
+function placeholder(text = "放入模型照片") {
+
+  return `
+    <div class="placeholder">
+      ${text}
+    </div>
+  `;
+}
+
+
+function photoHTML(src, alt = "") {
+
+  if (!src) {
+    return placeholder();
+  }
+
+  return `
+    <img
+      src="${src}"
+      alt="${alt}"
+      loading="lazy"
+      onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;placeholder&quot;>圖片找不到<br><small>${src}</small></div>';"
+    >
+  `;
+}
+
+
+/* =====================================================
+   上方 Banner
+   ===================================================== */
+
+function renderHero() {
+
+  const track =
+    document.getElementById("heroTrack");
+
+  const dots =
+    document.getElementById("heroDots");
+
+
+  track.innerHTML = heroImages.map(
+    (src, i) => `
+
+      <div class="hero-slide">
+
+        ${
+          src
+          ? `
+            <img
+              src="${src}"
+              alt="模型主視覺"
+              onerror="
+                this.style.display='none';
+                this.parentElement.insertAdjacentHTML(
+                  'afterbegin',
+                  '<div class=&quot;hero-placeholder&quot;>主視覺圖片找不到<br><small>${src}</small></div>'
+                );
+              "
+            >
+          `
+          : placeholder("放入主視覺照片")
+        }
+
+        <div class="hero-caption">
+          ${
+            i === 0
+            ? "工程模型 · 精緻收藏"
+            : "EXCAVATOR COLLECTION"
+          }
+        </div>
+
+      </div>
+
+    `
+  ).join("");
+
+
+  dots.innerHTML = heroImages.map(
+    (_, i) => `
+      <button
+        class="dot ${i === 0 ? "active" : ""}"
+        onclick="setHero(${i})"
+      ></button>
+    `
+  ).join("");
+
+}
+
+
+/* =====================================================
+   Banner 切換
+   ===================================================== */
+
+function setHero(i) {
+
+  currentHero = i;
+
+  document
+    .getElementById("heroTrack")
+    .style.transform =
+    `translateX(-${i * 100}%)`;
+
+
+  document
+    .querySelectorAll("#heroDots .dot")
+    .forEach(
+      (dot, j) => {
+
+        dot.classList.toggle(
+          "active",
+          i === j
+        );
+
+      }
+    );
+
+}
+
+
+/* =====================================================
+   Banner 自動輪播
+   ===================================================== */
+
+setInterval(
+  () => {
+
+    if (heroImages.length > 1) {
+
+      setHero(
+        (currentHero + 1) %
+        heroImages.length
+      );
+
+    }
+
+  },
+  5000
+);
+
+
+/* =====================================================
+   商品列表
+   ===================================================== */
+
+function renderProducts() {
+
+  const start =
+    (currentPage - 1) * perPage;
+
+  const list =
+    products.slice(
+      start,
+      start + perPage
+    );
+
+
+  document.getElementById(
+    "productGrid"
+  ).innerHTML = list.map(
+    p => `
+
+      <article
+        class="card"
+        onclick="openDetail(${p.id})"
+      >
+
+        <div class="card-img">
+
+          ${photoHTML(
+            p.images[0],
+            p.name
+          )}
+
+        </div>
+
+
+        <div class="card-body">
+
+          <div class="tag">
+            ${p.tag}
+          </div>
+
+          <div class="card-title">
+            ${p.name}
+          </div>
+
+          <div class="price">
+            NT$ ${money(p.price)}
+          </div>
+
+          <div class="meta">
+            點擊查看完整規格與多張照片 →
+          </div>
+
+        </div>
+
+      </article>
+
+    `
+  ).join("");
+
+
+  const pages =
+    Math.ceil(
+      products.length / perPage
+    );
+
+
+  document.getElementById(
+    "pager"
+  ).innerHTML = Array.from(
+    { length: pages },
+    (_, i) => `
+
+      <button
+        class="page-btn ${
+          i + 1 === currentPage
+          ? "active"
+          : ""
+        }"
+        onclick="goPage(${i + 1})"
+      >
+        ${i + 1}
+      </button>
+
+    `
+  ).join("");
+
+}
+
+
+/* =====================================================
+   商品分頁
+   ===================================================== */
+
+function goPage(p) {
+
+  currentPage = p;
+
+  renderProducts();
+
+  document
+    .getElementById("models")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+
+}
+
+
+/* =====================================================
+   開啟商品詳細資料
+   ===================================================== */
+
+function openDetail(id) {
+
+  currentProduct =
+    products.find(
+      p => p.id === id
+    );
+
+
+  const p =
+    currentProduct;
+
+
+  if (!p) {
+    return;
+  }
+
+
+  document.getElementById(
+    "detailTag"
+  ).textContent = p.tag;
+
+
+  document.getElementById(
+    "detailName"
+  ).textContent = p.name;
+
+
+  document.getElementById(
+    "detailPrice"
+  ).textContent =
+    "NT$ " + money(p.price);
+
+
+  document.getElementById(
+    "detailDesc"
+  ).textContent = p.desc;
+
+
+  document.getElementById(
+    "detailSpec"
+  ).innerHTML =
+    p.specs.map(
+      s => `
+        <b>${s[0]}</b>
+        <span>${s[1]}</span>
+      `
+    ).join("");
+
+
+  const imgs =
+    p.images.filter(Boolean);
+
+
+  document.getElementById(
+    "mainPhoto"
+  ).innerHTML =
+    photoHTML(
+      imgs[0] || "",
+      p.name
+    );
+
+
+  document.getElementById(
+    "thumbs"
+  ).innerHTML = (
+
+    imgs.length
+      ? imgs
+      : [null, null, null]
+
+  ).map(
+
+    (src, i) => `
+
+      <div
+        class="thumb ${
+          i === 0
+          ? "active"
+          : ""
+        }"
+        onclick="changeDetailPhoto(
+          ${i},
+          '${src || ""}'
+        )"
+      >
+
+        ${
+          src
+          ? `
+            <img
+              src="${src}"
+              alt="${p.name}"
+              onerror="this.style.display='none';"
+            >
+          `
+          : placeholder("照片")
+        }
+
+      </div>
+
+    `
+
+  ).join("");
+
+
+  document
+    .getElementById("detailModal")
+    .classList.add("show");
+
+
+  document.body.style.overflow =
+    "hidden";
+
+}
+
+
+/* =====================================================
+   詳細頁切換照片
+   ===================================================== */
+
+function changeDetailPhoto(i, src) {
+
+  document.getElementById(
+    "mainPhoto"
+  ).innerHTML =
+    photoHTML(src);
+
+
+  document
+    .querySelectorAll(
+      "#thumbs .thumb"
+    )
+    .forEach(
+      (t, j) => {
+
+        t.classList.toggle(
+          "active",
+          i === j
+        );
+
+      }
+    );
+
+}
+
+
+/* =====================================================
+   加入購物車
+   ===================================================== */
+
+
+
+/* =====================================================
+   購買全部
+   ===================================================== */
+
+function buyAll() {
+
+  cart = [...products];
+
+  updateCart();
+
+  openCart();
+
+}
+
+
+/* =====================================================
+   更新購物車
+   ===================================================== */
+
+function updateCart() {
+
+  document.getElementById(
+    "cartCount"
+  ).textContent =
+    cart.length;
+
+
+  document.getElementById(
+    "cartItems"
+  ).innerHTML = cart.length
+
+    ? cart.map(
+        p => `
+
+          <div class="cart-row">
+
+            <span>
+              ${p.name}
+            </span>
+
+            <b>
+              NT$ ${money(p.price)}
+            </b>
+
+          </div>
+
+        `
+      ).join("")
+
+    : `
+      <p class="sub">
+        購物車目前是空的。
+      </p>
+    `;
+
+
+  document.getElementById(
+    "cartTotal"
+  ).textContent =
+    money(
+      cart.reduce(
+        (s, p) =>
+          s + p.price,
+        0
+      )
+    );
+
+}
+
+
+/* =====================================================
+   開啟購物車
+   ===================================================== */
+
+function openCart() {
+
+  updateCart();
+
+  document
+    .getElementById("cartModal")
+    .classList.add("show");
+
+}
+
+
+/* =====================================================
+   關閉視窗
+   ===================================================== */
+
+function closeModal(id) {
+
+  document
+    .getElementById(id)
+    .classList.remove("show");
+
+  if (
+    !document.querySelector(
+      ".modal.show"
+    )
+  ) {
+
+    document.body.style.overflow =
+      "";
+
+  }
+
+}
+
+
+/* =====================================================
+   點擊背景關閉
+   ===================================================== */
+
+function closeOnBackdrop(e, id) {
+
+  if (
+    e.target.id === id
+  ) {
+
+    closeModal(id);
+
+  }
+
+}
+
+
+/* =====================================================
+   開啟 Google 表單
+   ===================================================== */
+function openOrderForm() {
+  if (!GOOGLE_FORM_URL) {
+    alert("尚未設定 Google 表單網址。");
+    return;
+  }
+
+  closeModal("cartModal");
+  document.getElementById("formModal").classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+
+
+/* =====================================================
+   啟動
+   ===================================================== */
+
+renderHero();
+
+renderProducts();
+
+updateCart();
+
+</script>
+</body>
+</html>
