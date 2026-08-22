@@ -27,6 +27,31 @@ button,a{font:inherit} a{text-decoration:none;color:inherit}
 .hero-dots{position:absolute;bottom:18px;right:28px;display:flex;gap:7px}
 .dot{width:9px;height:9px;border-radius:50%;border:0;background:#fff8;cursor:pointer}.dot.active{background:#fff}
 .section{max-width:1200px;margin:70px auto;padding:0 24px}
+/* ===== 購買規則 ===== */
+.purchase-rules{
+  max-width:1200px;margin:55px auto 0;padding:0 24px;
+}
+.rules-box{
+  background:#fff;border:1px solid var(--line);border-left:5px solid var(--orange);
+  border-radius:22px;padding:28px 30px;box-shadow:0 8px 25px rgba(0,0,0,.05);
+}
+.rules-head{display:flex;align-items:center;gap:12px;margin-bottom:15px}
+.rules-icon{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#fff1e4;color:var(--orange);font-weight:900}
+.rules-title{font-size:24px;font-weight:900;margin:0}
+.rules-list{margin:0;padding-left:22px;color:#555;line-height:1.9;font-size:14px}
+.rules-list li{margin:5px 0}
+.product-code{display:inline-block;margin-bottom:7px;padding:4px 9px;border-radius:8px;background:#171717;color:#fff;font-size:12px;font-weight:900;letter-spacing:.8px}
+.detail-code{display:inline-block;margin:0 0 10px;padding:6px 11px;border-radius:9px;background:#171717;color:#fff;font-size:13px;font-weight:900;letter-spacing:1px}
+.cart-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.cart-actions button{margin-top:0}
+.continue-btn{border:1px solid var(--dark);background:#fff;color:var(--dark);padding:15px;border-radius:13px;font-weight:900;cursor:pointer}
+.continue-btn:hover{background:#f7f3ed}
+@media(max-width:520px){
+  .purchase-rules{padding:0 14px;margin-top:40px}
+  .rules-box{padding:22px 20px;border-radius:18px}
+  .rules-title{font-size:21px}
+  .cart-actions{grid-template-columns:1fr}
+}
 .section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:24px}
 .eyebrow{font-size:12px;color:var(--orange);font-weight:900;letter-spacing:2px}
 h1,h2,h3,p{margin-top:0}.section h2{font-size:32px;margin:6px 0}
@@ -106,37 +131,6 @@ h1,h2,h3,p{margin-top:0}.section h2{font-size:32px;margin:6px 0}
   #formModal iframe{height:calc(96vh - 105px)}
 }
 
-/* ===== 整批販售提醒 ===== */
-.sale-notice{
-  margin-top:20px;
-  padding:18px 20px;
-  background:#fff7ef;
-  border:1px solid #f0c69f;
-  border-radius:14px;
-  color:#5f4632;
-  font-size:14px;
-  line-height:1.8;
-}
-
-.sale-notice strong{
-  display:block;
-  color:var(--orange);
-  font-size:16px;
-  margin-bottom:6px;
-}
-
-.sale-notice p{
-  margin:5px 0;
-}
-
-.sale-notice b{
-  color:var(--dark);
-}
-
-</style>
-
-
-
 </style>
 </head>
 <body>
@@ -144,7 +138,7 @@ h1,h2,h3,p{margin-top:0}.section h2{font-size:32px;margin:6px 0}
 <header class="header">
   <nav class="nav">
     <div class="logo">陞得你<span>型</span></div>
-    <div class="navlinks"><a href="#models">模型收藏</a><a href="#all">一次購入</a></div>
+    <div class="navlinks"><a href="#models">模型收藏</a></div>
     <button class="cart-pill" onclick="openCart()">購物車 <span id="cartCount">0</span></button>
   </nav>
 </header>
@@ -157,6 +151,16 @@ h1,h2,h3,p{margin-top:0}.section h2{font-size:32px;margin:6px 0}
   </div>
 </section>
 
+<section class="purchase-rules" id="rules">
+  <div class="rules-box">
+    <div class="rules-head">
+      <div class="rules-icon">!</div>
+      <h2 class="rules-title">購買規則</h2>
+    </div>
+    <ul class="rules-list" id="purchaseRulesList"></ul>
+  </div>
+</section>
+
 <section class="section" id="models">
   <div class="section-head">
     <div><div class="eyebrow">MODEL COLLECTION</div><h2>挖土機模型收藏</h2><div class="sub">點擊模型查看完整照片、品名與規格</div></div>
@@ -165,38 +169,7 @@ h1,h2,h3,p{margin-top:0}.section h2{font-size:32px;margin:6px 0}
   <div class="pager" id="pager"></div>
 </section>
 
-<section class="section" id="all">
-  <div class="bulk">
-    <div>
-      <div class="eyebrow">COLLECT THEM ALL</div>
 
-      <h2>整批收藏，一次帶走</h2>
-
-      <p>
-        所有模型採整批收藏販售，
-        僅接受一次購買全部商品，不提供單件購買。
-      </p>
-
-      <div class="sale-notice">
-        <strong>📦 販售方式</strong>
-
-        <p>
-          本商品採 <b>整批收藏販售</b>，<br>
-          僅接受一次購買全部商品，不提供單件購買。
-        </p>
-
-        <p>
-          下單前請確認販售方式，確認無誤後再進行購買。
-        </p>
-      </div>
-    </div>
-
-    <button class="buy-all" onclick="buyAll()">
-      購買全部 →
-    </button>
-  </div>
-</section>
-</main>
 
 <footer class="footer">EXCAVATOR LAB · 挖土機模型收藏館</footer>
 
@@ -207,10 +180,12 @@ h1,h2,h3,p{margin-top:0}.section h2{font-size:32px;margin:6px 0}
     <div class="detail">
       <div class="gallery"><div class="main-photo" id="mainPhoto"></div><div class="thumbs" id="thumbs"></div></div>
       <div class="detail-info">
-        <div class="eyebrow" id="detailTag"></div><h2 id="detailName"></h2>
+        <div class="eyebrow" id="detailTag"></div>
+        <div class="detail-code" id="detailCode"></div>
+        <h2 id="detailName"></h2>
         <p class="price" id="detailPrice"></p><p id="detailDesc" class="sub"></p>
         <div class="spec" id="detailSpec"></div>
-        <button class="modal-buy" onclick="buyAll()">整批購買全部商品 →</button>
+        <button class="modal-buy" onclick="addCurrentToCart()">加入購物車</button>
       </div>
     </div>
   </div>
@@ -220,16 +195,15 @@ h1,h2,h3,p{margin-top:0}.section h2{font-size:32px;margin:6px 0}
 <div class="modal" id="cartModal" onclick="closeOnBackdrop(event,'cartModal')">
   <div class="modal-box cart-modal">
     <button class="close" onclick="closeModal('cartModal')">×</button>
-    <div class="eyebrow">COLLECTION ORDER</div>
-<h2>整批收藏訂購</h2>
-<p class="sub">
-  本商品僅接受整批購買，不提供單件商品購買。
-</p>
+    <div class="eyebrow">YOUR CART</div><h2>購物車</h2>
     <div id="cartItems"></div>
     <div class="total">總金額：NT$ <span id="cartTotal">0</span></div>
     <div class="ship">確認商品與總金額後，按下「填寫訂購資料」，即可填寫姓名、電話、收件地址與備註。我們收到資料後將安排宅配。</div>
     <div class="url-box">配送方式：宅配<br>請確認收件姓名、電話與地址填寫正確。</div>
-    <button class="modal-buy" onclick="openOrderForm()">填寫訂購資料 →</button>
+    <div class="cart-actions">
+      <button class="continue-btn" onclick="continueShopping()">← 繼續購物</button>
+      <button class="modal-buy" onclick="openOrderForm()">填寫訂購資料 →</button>
+    </div>
   </div>
 
 </div>
@@ -262,6 +236,20 @@ h1,h2,h3,p{margin-top:0}.section h2{font-size:32px;margin:6px 0}
    ① Google 表單
    ===================================================== */
 const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfX7tjEinfnckt2nI0mdaAVJotw8tTjwTuuJTvPuaG8zfuA6A/viewform";
+
+/*
+  =====================================================
+  ③ 購買規則｜之後要修改規則，只要修改下面這裡即可
+  一行就是一條規則，可自行增加或刪除。
+  =====================================================
+*/
+const purchaseRules = [
+  "商品皆為收藏品，部分模型為二手已拆擺，商品狀況請詳閱各模型頁面的「狀態」與照片。",
+  "確認購買品項後，請加入購物車並按「填寫訂購資料」完成訂購表單。",
+ " 若您有意願 整批購入全部商品（全收），請於我們的 Facebook 貼文下方留言「全收」，我們將再透過 Facebook 私訊與您聯繫後續購買及付款事宜。⚠️請勿直接下單，需先留言「全收」確認",
+  "填寫表單時，請直接告知「模型編號」，例如：01、07、15，方便快速確認商品。",
+  "配送方式為宅配，請確認姓名、電話與收件地址填寫正確。"
+];
 
 
 /* =====================================================
@@ -520,7 +508,7 @@ tag: "COLLECTION",
     id: 12,
     name: "CAT 325 模型",
     tag: "COLLECTION",
-    price:2000,
+    price: 2000,
 
     desc: "※圖片僅供情景示意，非實際拍攝環境；石頭為拍攝情境使用之道具，不包含於商品內容物中",
 
@@ -711,7 +699,7 @@ tag: "COLLECTION",
     id: 21,
     name: "CAT 卡特彼勒賽車隊 夾心邊撞色棒球帽",
     tag: "COLLECTION",
-    price: 1500,
+    price: 1000,
 
     desc: "※圖片僅供情景示意，非實際拍攝環境",
 
@@ -1055,6 +1043,10 @@ function openDetail(id) {
     "detailTag"
   ).textContent = p.tag;
 
+  document.getElementById(
+    "detailCode"
+  ).textContent = "商品編號：" + String(p.id).padStart(2,"0");
+
 
   document.getElementById(
     "detailName"
@@ -1184,6 +1176,28 @@ function changeDetailPhoto(i, src) {
    加入購物車
    ===================================================== */
 
+function addCurrentToCart() {
+
+  if (!currentProduct) {
+    return;
+  }
+
+
+  cart = [
+    ...cart.filter(
+      x => x.id !== currentProduct.id
+    ),
+    currentProduct
+  ];
+
+
+  updateCart();
+
+  closeModal("detailModal");
+
+  openCart();
+
+}
 
 
 /* =====================================================
@@ -1200,6 +1214,24 @@ function buyAll() {
 
 }
 
+
+/* =====================================================
+   購買規則
+   ===================================================== */
+function renderPurchaseRules() {
+  document.getElementById("purchaseRulesList").innerHTML =
+    purchaseRules.map(rule => `<li>${rule}</li>`).join("");
+}
+
+/* =====================================================
+   繼續購物
+   ===================================================== */
+function continueShopping() {
+  closeModal("cartModal");
+  document.getElementById("models").scrollIntoView({
+    behavior: "smooth"
+  });
+}
 
 /* =====================================================
    更新購物車
@@ -1223,6 +1255,7 @@ function updateCart() {
           <div class="cart-row">
 
             <span>
+              <b>編號 ${String(p.id).padStart(2,"0")}</b><br>
               ${p.name}
             </span>
 
@@ -1332,9 +1365,8 @@ function openOrderForm() {
    ===================================================== */
 
 renderHero();
-
+renderPurchaseRules();
 renderProducts();
-
 updateCart();
 
 </script>
